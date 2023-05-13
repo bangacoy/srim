@@ -9,7 +9,8 @@ build:
   project: vMenu.sln
   include_nuget_references: true
   verbosity: minimal
-
+after_build:
+  - cmd: appveyor PushArtifact vMenu-%VERSION_NAME%.zip
 deploy:
   - provider: GitHub
     release: "[Release] vMenu $(VERSION_NAME)"
