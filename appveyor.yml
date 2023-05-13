@@ -12,7 +12,7 @@ build:
 after_build:
   - cmd: copy README.md ..\build\README.md
   - cmd: copy LICENSE.md ..\build\LICENSE.md
-  - ps: Invoke-WebRequest -OutFile '..\build\__resource.lua' https://vespura.com/vmenu/__resource.lua
+  - ps: Invoke-WebRequest -OutFile '..\build\net452\fxmanifest.lua' https://vespura.com/vmenu/fxmanifest.lua
   - cmd: if %APPVEYOR_REPO_TAG%==true (appveyor SetVariable -Name VERSION_NAME -Value %APPVEYOR_REPO_TAG_NAME%) else (appveyor SetVariable -Name VERSION_NAME -Value beta)
   - cmd: 7z a vMenu-%VERSION_NAME%.zip -r ..\build\*
   - cmd: appveyor PushArtifact vMenu-%VERSION_NAME%.zip
