@@ -10,18 +10,17 @@ build:
   include_nuget_references: true
   verbosity: minimal
 after_build:
-  - cmd: appveyor PushArtifact vMenu-%VERSION_NAME%.zip
+  - cmd: appveyor PushArtifact vMenu.zip
 deploy:
   - provider: GitHub
     release: "[Release] vMenu $(VERSION_NAME)"
-    tag: $(VERSION_NAME)
-    artifact: vMenu-$(VERSION_NAME).zip
+    artifact: vMenu.zip
     draft: true
     prerelease: false
     auth_token: $(github_auth)
     on:
       APPVEYOR_REPO_TAG: true
-    description: "vMenu version $(VERSION_NAME)."
+    description: "vMenu"
 on_success:
   - cmd: appveyor/on_success.bat
 on_failure:
